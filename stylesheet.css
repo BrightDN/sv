@@ -49,7 +49,7 @@ h1{
 .flexbox{
     display:flex;
     flex-flow: wrap row;
-    width:508px;
+    width:510px;
     text-align: center;
     position:absolute;
     left:60px;
