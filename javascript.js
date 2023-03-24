@@ -433,7 +433,6 @@ function createEntries(){
 			if(tempArrayChecker == 0){chosenNumber = getRandomNumber(0,399)}
 		 }while(tempArrayChecker == 0)
 		tempArray.push(chosenNumber);
-		console.log(pokemonSV[chosenNumber].img)
 		pokeImg.setAttribute("src", "./assets/img/dexEntries/" + pokemonSV[chosenNumber].name + ".png")
 		pokeImg.setAttribute("alt", "image of " + pokemonSV[chosenNumber].name)
         dexAndName.innerHTML = (chosenNumber+1) + " - " + pokemonSV[chosenNumber].name;
