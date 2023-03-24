@@ -1,8 +1,0 @@
-{
-"pokemonSV":[
-	{"dexId":"1", "name":"Sprigatito", "findable":"false", "exclusive":"false", "img":"null"},
-	{"dexId":"2", "name":"Floragato", "findable":"false", "exclusive":"false", "img":"null"},
-	{"dexId":"3", "name":"Meowscarada", "findable":"false", "exclusive":"false", "img":"null"},
-	{"dexId":"4", "name":"Fuecoco", "findable":"false", "exclusive":"false", "img":"null"}
-]
-}
