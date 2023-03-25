@@ -408,8 +408,8 @@ const flexBox = document.getElementsByClassName("flexbox")
 // Defined in global so all functions can use
 let chosenNumber;
 let tempArrayChecker;
-const newArray = [];
-const inputArray = [];
+let newArray = [];
+let inputArray = [];
 
 const copyButton = document.getElementsByTagName("button")
 // Clip data to clipboard
