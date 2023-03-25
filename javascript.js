@@ -401,18 +401,35 @@ const pokemonSV =[
 	{"dexId":"400", "name":"Miraidon", "findable":false, "exclusive":true}
 	]
    
-let clicker = document.getElementById("clickMe");
+const clicker = document.getElementById("clickMe");
 clicker.addEventListener("click", createEntries);
-let flexBox = document.getElementsByClassName("flexbox")
-// Defined in global so both functions can use
+
+const flexBox = document.getElementsByClassName("flexbox")
+// Defined in global so all functions can use
 let chosenNumber;
 let tempArrayChecker;
-function createEntries(){	
+const newArray = [];
+const inputArray = [];
 
+const copyButton = document.getElementsByTagName("button")
+// Clip data to clipboard
+copyButton[0].addEventListener("click", function(){navigator.clipboard.writeText(newArray);})
+// Create entries using the clipboard data put in inputfield
+copyButton[1].addEventListener("click", function(){
+	const tempInput = document.getElementsByTagName("input");
+	// Creating the dexId's from the read string
+	inputArray = tempInput[0].value.split(",");
+	inputArray.forEach(changeValuesToInt)
+	createEntries();
+})
+
+function createEntries(){	
+	// change location of the pokeball to the bottom, will only do something first time
 	if(clicker.classList.contains("clickMeOriginal")){
 		clicker.classList.remove("clickMeOriginal")
 		clicker.classList.add("clickerNewLocation")
 	}
+
 	const tempArray = []
 	
 	// cleaning the current bingo list
@@ -422,35 +439,49 @@ function createEntries(){
 		let div = document.createElement("div");
 		div.setAttribute("class", "flexitem");
 		if(i==0 || i==4 || i==20 || i==24){div.classList.add("corner"+i)}
+
         let dexAndName = document.createElement("p");
 		let pokeImg = document.createElement("img");
-        chosenNumber = getRandomNumber(0,399);	
-		do{
+		// If you are importing the bingo, use different values
+		if(inputArray.length > 2){
+			pokeImg.setAttribute("src", "./assets/img/dexEntries/" + pokemonSV[inputArray[i]].name + ".png")
+			pokeImg.setAttribute("alt", "image of " + pokemonSV[inputArray[i]].name)
+
+        	dexAndName.innerHTML = (inputArray[i]+1) + " - " + pokemonSV[inputArray[i]].name;
+		}else{
+			// If you are not importing data, make sure there are no doublets and that every exception is passed
+			do{
+			chosenNumber = getRandomNumber(0,399);
 			tempArrayChecker = 1
 			tempArray.forEach(compareArray)
-			if(pokemonSV[chosenNumber].exclusive == true){tempArrayChecker = 0}
-			if(pokemonSV[chosenNumber].findable == false){tempArrayChecker = 0}
-			if(tempArrayChecker == 0){chosenNumber = getRandomNumber(0,399)}
+			if(pokemonSV[chosenNumber].exclusive == true || pokemonSV[chosenNumber].findable == false){tempArrayChecker = 0}
 		 }while(tempArrayChecker == 0)
 		tempArray.push(chosenNumber);
+
 		pokeImg.setAttribute("src", "./assets/img/dexEntries/" + pokemonSV[chosenNumber].name + ".png")
 		pokeImg.setAttribute("alt", "image of " + pokemonSV[chosenNumber].name)
+
         dexAndName.innerHTML = (chosenNumber+1) + " - " + pokemonSV[chosenNumber].name;
+	}
 		div.appendChild(pokeImg);
 		div.appendChild(dexAndName);
-        flexBox[0].appendChild(div)
+        flexBox[0].appendChild(div)	
     }
+	newArray = tempArray
+	inputArray = [];
 }
 
-function compareArray(value){if(value == chosenNumber){tempArrayChecker = 0}}
 
+// Small helperFunctions
+function changeValuesToInt(value, index){inputArray[index] = parseInt(value)}
+function compareArray(value){if(value == chosenNumber){tempArrayChecker = 0}}
 function getRandomNumber(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
     return parseInt(Math.floor(Math.random() * (max - min + 1) + min))
 }
-
+// Toggler for the bingofield
 flexBox[0].addEventListener('click', (e) => {
 	if(e.target.tagName == "DIV"){e.target.classList.toggle("cover")}
-	else{console.log(e.target.parentElement.classList.toggle("cover"))}
+	else{e.target.parentElement.classList.toggle("cover")}
 })
