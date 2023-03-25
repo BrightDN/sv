@@ -13,12 +13,12 @@ h1{
     width:600px;
     height:650px;
     border-radius:30px;
-    background:linear-gradient(red, black, white );
+    background-image: url("./assets/img/image.jpg");
     text-align: center;
 }
  .clickMeOriginal{
     position:relative;
-    margin: 250px auto;
+    margin: 230px auto;
     max-height:80px;
     max-width: auto;
     z-index: 3;
