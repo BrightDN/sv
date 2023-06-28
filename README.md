@@ -1,21 +1,12 @@
-# SV
-Pokemon Scarlet and Violet bingo
+# Pokemon Bingo Proto
+28/06/2023
+This project is discontinued and is now seen as a prototypeversion.
 
-This is just a for funproject
-The code has been written rapidly, there is no optimalization done for the code
-
-Plans for this repository:
-
-More game-options will be added, e.g.
---> Surprise trade bingo
---> Shiny bingo
--->A capture race
--->More to be decided
-
-Complete overhaul of the code so it is more optimalized and faster loading, images shrinked down so less mb has to be loaded
-
-Complete overhaul of the minimalistic website page, more customizable and a better design
+New and completed version will come
 
 
-
----- if you want to use the pokemonSV[] array containing all the pokemon in the paldea pokedex, feel free to copy it from javascript.js
+New version will contain ALL pokemon and will be updated as new pokemon get released
+Will contain options to choose between games and their corresponding specialties for example version exclusives
+Will contain the option to include multiple games in one bingocard and customizable bingoboardsize
+May contain customizing of the page
+May contain more functionality
